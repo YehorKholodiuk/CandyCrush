@@ -17,14 +17,29 @@ const App = () => {
 
 
     const checkForColumnOfFour = () => {
-        for (let i = 0; i < 39; i++){
+        for (let i = 0; i < 39; i++) {
             const columnOfFour = [i, i + width, i + width * 2, i + width * 3]
             const decidedColor = currentColorArrangement[i]
-            if (columnOfFour.every(square => currentColorArrangement[square] === decidedColor)){
+            if (columnOfFour.every(square => currentColorArrangement[square] === decidedColor)) {
                 columnOfFour.forEach(square => currentColorArrangement[square] = '')
             }
         }
     }
+
+    const checkForRowOfFour = () => {
+        for (let i = 0; i < 64; i++){
+            const RowOfFour = [i, i + 1, i + 2, i + 3]
+            const decidedColor = currentColorArrangement[i]
+            const notValid = [6,7,13,14,15,21,22,23,29,30,31,37,38,39,45,46,47,53,54,55,62,63,64]
+            if (notValid.includes(i)) continue
+
+            if (RowOfFour.every(square => currentColorArrangement[square] === decidedColor)){
+                RowOfFour.forEach(square => currentColorArrangement[square] = '')
+            }
+        }
+    }
+
+
 
     const checkForColumnOfThree = () => {
         for (let i = 0; i < 47; i++){
@@ -72,11 +87,12 @@ useEffect(() => {
             checkForColumnOfFour()
             checkForColumnOfThree()
             checkForRowOfThree()
+            checkForRowOfFour()
             setCurrentColorArrangement([...currentColorArrangement])
             },100)
 
         return () => clearInterval(timer)
-        }, [checkForColumnOfFour,checkForColumnOfThree,checkForRowOfThree, currentColorArrangement]
+        }, [checkForColumnOfFour,checkForColumnOfThree,checkForRowOfThree,checkForColumnOfFour, currentColorArrangement]
 
     )
     console.log(currentColorArrangement)
