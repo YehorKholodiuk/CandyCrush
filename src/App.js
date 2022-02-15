@@ -81,16 +81,16 @@ const App = () => {
   }
 
 
-    const dragStart = (e) => {
-    console.log(e.target)
+    const dragStart = () => {
+
         console.log('drag start')
     }
-    const dragDrop = (e) => {
-    console.log(e.target)
+    const dragDrop = () => {
+
         console.log('drag drop')
     }
-    const dragEnd = (e) => {
-    console.log(e.target)
+    const dragEnd = () => {
+
         console.log('drag end')
     }
 
@@ -125,7 +125,7 @@ useEffect(() => {
         }, [checkForColumnOfFour,checkForColumnOfThree,checkForRowOfThree,checkForColumnOfFour,moveIntoSquareBelow ,currentColorArrangement]
 
     )
-    console.log(currentColorArrangement)
+    //console.log(currentColorArrangement)
 
     return (
         <div className="app">
