@@ -14,10 +14,12 @@ const candyColors = [
 
 const App = () => {
     const [currentColorArrangement,setCurrentColorArrangement] = useState([])
+    const [squareBeingDragged, setSquareBeingDragged] = useState(null)
+    const [squareBeingReplaced, setSquareBeingReplaced] = useState(null)
 
 
     const checkForColumnOfFour = () => {
-        for (let i = 0; i < 39; i++) {
+        for (let i = 0; i <= 39; i++) {
             const columnOfFour = [i, i + width, i + width * 2, i + width * 3]
             const decidedColor = currentColorArrangement[i]
             if (columnOfFour.every(square => currentColorArrangement[square] === decidedColor)) {
@@ -42,7 +44,7 @@ const App = () => {
 
 
     const checkForColumnOfThree = () => {
-        for (let i = 0; i < 47; i++){
+        for (let i = 0; i <= 47; i++){
             const columnOfThree = [i, i + width, i + width * 2]
             const decidedColor = currentColorArrangement[i]
             if (columnOfThree.every(square => currentColorArrangement[square] === decidedColor)){
@@ -81,17 +83,21 @@ const App = () => {
   }
 
 
-    const dragStart = () => {
-
+    const dragStart = (e) => {
+        console.log(e.target)
         console.log('drag start')
-    }
-    const dragDrop = () => {
 
-        console.log('drag drop')
+        setSquareBeingDragged(e.target)
     }
-    const dragEnd = () => {
+    const dragDrop = (e) => {
+        console.log(e.target)
+        console.log('drag drop')
+        setSquareBeingReplaced(e.target)
+    }
+    const dragEnd = (e) => {
 
         console.log('drag end')
+
     }
 
 
