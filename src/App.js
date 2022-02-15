@@ -98,6 +98,11 @@ const App = () => {
 
         console.log('drag end')
 
+        const squareBeingDraggedId = parseInt(squareBeingDragged.getAttribute('data-id'))
+        const squareBeingReplacedId = parseInt(squareBeingReplaced.getAttribute('data-id'))
+        console.log('squareBeingDraggedId',squareBeingReplaced)
+        console.log('squareBeingReplacedId',squareBeingReplaced)
+
     }
 
 
