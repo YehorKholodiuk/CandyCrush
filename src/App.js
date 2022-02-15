@@ -81,6 +81,20 @@ const App = () => {
   }
 
 
+    const dragStart = (e) => {
+    console.log(e.target)
+        console.log('drag start')
+    }
+    const dragDrop = (e) => {
+    console.log(e.target)
+        console.log('drag drop')
+    }
+    const dragEnd = (e) => {
+    console.log(e.target)
+        console.log('drag end')
+    }
+
+
   const createBoard = () =>{
     const randomColorArrangement = [];
 for (let i = 0; i < width*width;i++) {
@@ -119,9 +133,18 @@ useEffect(() => {
                 {
                     currentColorArrangement.map((candyColor,index)=> (
                     <img
-                    key={index}
-                    style={{backgroundColor:candyColor}}
-                    alt={candyColor}
+                        key={index}
+                        style={{backgroundColor:candyColor}}
+                        src={candyColor}
+                        alt={candyColor}
+                        data-id={index}
+                        draggable={true}
+                        onDragStart={dragStart}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDragEnter={(e) => e.preventDefault()}
+                        onDragLeave={(e) => e.preventDefault()}
+                        onDrop={dragDrop}
+                        onDragEnd={dragEnd}
                     />
                 ))
 
