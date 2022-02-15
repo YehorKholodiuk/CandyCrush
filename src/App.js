@@ -102,6 +102,8 @@ const App = () => {
         const squareBeingReplacedId = parseInt(squareBeingReplaced.getAttribute('data-id'))
         console.log('squareBeingDraggedId',squareBeingReplaced)
         console.log('squareBeingReplacedId',squareBeingReplaced)
+        currentColorArrangement[squareBeingReplacedId] = squareBeingDragged.getAttribute('src')
+        currentColorArrangement[squareBeingDraggedId] = squareBeingReplaced.getAttribute('src')
 
     }
 
@@ -130,7 +132,7 @@ useEffect(() => {
             checkForRowOfFour()
             moveIntoSquareBelow()
             setCurrentColorArrangement([...currentColorArrangement])
-            },1000)
+            },100)
 
         return () => clearInterval(timer)
         }, [checkForColumnOfFour,checkForColumnOfThree,checkForRowOfThree,checkForColumnOfFour,moveIntoSquareBelow ,currentColorArrangement]
